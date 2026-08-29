@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>문의 게시판 | 브라스레슨 트럼펫 레슨 트롬본 레슨</title>
+<meta name="description" content="트럼펫 레슨, 트롬본 레슨 문의 게시판. 서초·방배 트럼펫 학원, 트롬본 학원 브라스레슨에 궁금한 점을 남기시면 담당 선생님께 이메일로 바로 전달됩니다.">
+<meta name="keywords" content="트럼펫 레슨 문의, 트롬본 레슨 문의, 트럼펫 학원, 트롬본 학원, 브라스레슨 문의게시판">
+<meta name="robots" content="index, follow">
+<link rel="canonical" href="https://brasslessons.kr/board.html">
+<meta property="og:type" content="website">
+<meta property="og:locale" content="ko_KR">
+<meta property="og:site_name" content="브라스레슨">
+<meta property="og:title" content="문의 게시판 | 브라스레슨 트럼펫 레슨 트롬본 레슨">
+<meta property="og:description" content="트럼펫 레슨, 트롬본 레슨 문의 게시판. 궁금한 점을 남기시면 담당 선생님께 바로 전달됩니다.">
+<link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+<header class="site-header">
+  <div class="wrap">
+    <a href="index.html#hero" class="brand">
+      <img src="img/logo-icon.png" alt="트럼펫 트롬본 레슨 학원 브라스레슨 로고" width="34" height="28">
+      <span>브라스레슨<small>TRUMPET &amp; TROMBONE</small></span>
+    </a>
+    <nav class="main-nav" id="mainNav">
+      <a href="index.html#hero">홈</a>
+      <a href="index.html#about">강사소개</a>
+      <a href="index.html#curriculum">커리큘럼</a>
+      <a href="index.html#faq">Q&amp;A</a>
+      <a href="index.html#location">오시는길</a>
+      <a href="board.html" style="color:var(--gold-dark);">문의 게시판</a>
+    </nav>
+    <div class="header-actions">
+      <a href="index.html#contact" class="btn btn-kakao btn-sm">카톡 상담</a>
+      <button class="nav-toggle" id="navToggle" aria-label="메뉴 열기"><span></span><span></span><span></span></button>
+    </div>
+  </div>
+</header>
+
+<section style="padding-top:56px; padding-bottom:0;">
+  <div class="wrap">
+    <div class="section-head" style="margin-bottom:32px;">
+      <p class="eyebrow">Board</p>
+      <h2>문의 게시판</h2>
+      <p>레슨 관련 궁금한 점을 남겨주시면 담당 선생님께 이메일로 바로 전달됩니다. 연락처는 목록에 공개되지 않습니다.</p>
+    </div>
+  </div>
+</section>
+
+<section style="padding-top:0;">
+  <div class="wrap">
+    <div id="modeBanner" class="board-mode-banner" style="display:none;"></div>
+
+    <div class="board-toolbar">
+      <div id="countLabel" style="font-weight:700; color:var(--navy);">문의글 0건</div>
+      <button class="btn btn-primary btn-sm" onclick="document.getElementById('writeForm').scrollIntoView({behavior:'smooth'})">글쓰기</button>
+    </div>
+
+    <div id="boardList" class="board-list"></div>
+
+    <div class="board-form" id="writeForm">
+      <h3 style="color:var(--navy); margin-bottom:22px;">문의 글 작성</h3>
+      <form id="inquiryForm">
+        <div class="form-grid-2">
+          <div class="form-row">
+            <label for="f-name">이름 *</label>
+            <input type="text" id="f-name" name="name" required placeholder="홍길동">
+          </div>
+          <div class="form-row">
+            <label for="f-contact">연락처 (이메일 또는 전화번호) *</label>
+            <input type="text" id="f-contact" name="contact" required placeholder="회신 받으실 연락처">
+          </div>
+        </div>
+        <div class="form-grid-2">
+          <div class="form-row">
+            <label for="f-instrument">악기 선택 *</label>
+            <select id="f-instrument" name="instrument" required>
+              <option value="trumpet">트럼펫</option>
+              <option value="trombone">트롬본</option>
+              <option value="etc">잘 모르겠어요</option>
+            </select>
+          </div>
+          <div class="form-row">
+            <label for="f-title">제목 *</label>
+            <input type="text" id="f-title" name="title" required placeholder="문의 제목을 입력해주세요">
+          </div>
+        </div>
+        <div class="form-row">
+          <label for="f-message">문의 내용 *</label>
+          <textarea id="f-message" name="message" required placeholder="궁금하신 점을 자유롭게 남겨주세요."></textarea>
+        </div>
+        <label class="form-check">
+          <input type="checkbox" id="f-agree" required>
+          개인정보(이름, 연락처) 수집 및 상담 목적 이용에 동의합니다.
+        </label>
+        <button type="submit" class="btn btn-primary btn-block" style="margin-top:20px;">문의 등록하기</button>
+        <p class="form-note">등록하신 연락처는 게시판에 공개되지 않으며, 담당 선생님의 상담 및 이메일 회신 용도로만 사용됩니다.</p>
+        <p class="form-status" id="formStatus"></p>
+      </form>
+    </div>
+  </div>
+</section>
+
+<footer class="site-footer">
+  <div class="wrap">
+    <span>브라스레슨 · 서울 서초구 효령로31길 54 목련빌딩 용드럼스튜디오</span>
+    <span>&copy; <span id="year"></span> Brass Lessons. All rights reserved.</span>
+  </div>
+</footer>
+
+<script src="js/main.js"></script>
+<script src="js/board.js"></script>
+</body>
+</html>
