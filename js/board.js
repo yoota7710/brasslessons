@@ -7,7 +7,7 @@
   이 값이 비어 있으면 브라우저의 localStorage 만 사용하는 "데모 모드"로 동작한다.
   데모 모드에서는 이메일 발송이 되지 않고, 이 브라우저에만 글이 저장된다.
 */
-const APPS_SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbxANUDvAQ1E5MZ4kpj2Rg1lqHDo-AWHSCnPuf0e6kYeJEjk2eVBnTgb3iY_mtvy8NG2/exec';
+const APPS_SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbyXxn8Asmw4QjXliau_AKk4pj8QGXYeRID4qhBTFXRmh2YFGAT4uF4RrHkI8eVVLb8W/exec';
 
 const DEMO_KEY = 'brasslessons_inquiries_demo';
 const INSTRUMENT_LABEL = { trumpet: '트럼펫', trombone: '트롬본', etc: '문의' };
@@ -70,6 +70,18 @@ async function fetchInquiries() {
   }
 }
 
+/**
+ * Apps Script의 e.parameter / e.postData.contents 는 POST 본문의 한글 등
+ * non-ASCII 값을 복구 불가능하게 깨뜨리는 버그가 있다. base64는 전송 중
+ * 순수 ASCII만 쓰기 때문에 이 문제를 원천적으로 피할 수 있다.
+ */
+function utf8ToBase64(str) {
+  const bytes = new TextEncoder().encode(str);
+  let binary = '';
+  bytes.forEach((b) => { binary += String.fromCharCode(b); });
+  return btoa(binary);
+}
+
 async function submitInquiry(payload) {
   if (!isConfigured()) {
     const list = loadDemoList();
@@ -82,7 +94,7 @@ async function submitInquiry(payload) {
       method: 'POST',
       mode: 'no-cors',
       headers: { 'Content-Type': 'text/plain;charset=utf-8' },
-      body: JSON.stringify(payload),
+      body: utf8ToBase64(JSON.stringify(payload)),
     });
     return { ok: true, demo: false };
   } catch (e) {

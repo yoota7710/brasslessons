@@ -13,7 +13,7 @@
 const OWNER_EMAIL = 'yooka7710@gmail.com'; // 문의 알림을 받을 이메일 주소
 const SHEET_NAME = '문의목록';
 const ENABLE_KAKAO_NOTIFY = false; // 카카오 알림을 쓰려면 true 로 변경 (SETUP.md 4번 참고)
-const SCRIPT_VERSION = 'json-v3'; // 배포가 실제 반영됐는지 확인용 (doGet 응답에 포함)
+const SCRIPT_VERSION = 'b64-v4'; // 배포가 실제 반영됐는지 확인용 (doGet 응답에 포함)
 // ---------------------------------------------
 
 function getSheet_() {
@@ -56,12 +56,15 @@ function doGet(e) {
 }
 
 /**
- * e.parameter(form-urlencoded 파싱)는 POST 본문의 한글 등 non-ASCII 값을
- * 복구 불가능하게 깨뜨리는 Apps Script 버그가 있다. 클라이언트가 JSON으로
- * 보내고 여기서 직접 JSON.parse 하면 이 경로를 완전히 우회할 수 있다.
+ * e.parameter, e.postData.contents 둘 다 POST 본문의 한글 등 non-ASCII 값을
+ * 복구 불가능하게(U+FFFD) 깨뜨리는 Apps Script 버그가 있다. 클라이언트가
+ * UTF-8 JSON을 base64로 감싸 보내면(base64는 전송 중 순수 ASCII라 깨질 수
+ * 없음) 여기서 base64 디코딩 -> UTF-8 문자열 변환으로 원문을 안전하게 복구.
  */
 function doPost(e) {
-  const p = JSON.parse(e.postData.contents);
+  const bytes = Utilities.base64Decode(e.postData.contents);
+  const jsonStr = Utilities.newBlob(bytes).getDataAsString('UTF-8');
+  const p = JSON.parse(jsonStr);
   const name = p.name || '';
   const contact = p.contact || '';
   const instrument = p.instrument || 'etc';
