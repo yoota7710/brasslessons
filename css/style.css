@@ -265,6 +265,7 @@ section { padding: 96px 0; }
   margin: 0 auto 56px;
   text-align: center;
 }
+.section-head h1,
 .section-head h2 {
   font-size: clamp(1.6rem, 3vw, 2.3rem);
   color: var(--navy);
@@ -320,6 +321,7 @@ section { padding: 96px 0; }
   background: linear-gradient(180deg, transparent 55%, rgba(27,36,54,0.5));
   pointer-events: none;
 }
+.instructor-card > .instructor-info > h2,
 .instructor-card > .instructor-info > h3 { font-size: 1.5rem; color: var(--navy); }
 .instructor-role {
   display: inline-block;
@@ -612,6 +614,35 @@ section { padding: 96px 0; }
   justify-content: space-between;
   flex-wrap: wrap;
   gap: 12px;
+}
+.footer-links {
+  width: 100%;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px 18px;
+  margin-bottom: 14px;
+  padding-bottom: 14px;
+  border-bottom: 1px solid rgba(255,255,255,0.12);
+}
+.footer-links a {
+  color: rgba(255,255,255,0.6);
+}
+.footer-links a:hover {
+  color: var(--gold-light);
+}
+
+/* ---------- Breadcrumb ---------- */
+.breadcrumb {
+  font-size: 0.82rem;
+  color: var(--ink-soft);
+  margin-bottom: 14px;
+}
+.breadcrumb a {
+  color: var(--steel-dark);
+  font-weight: 600;
+}
+.breadcrumb a:hover {
+  color: var(--gold-dark);
 }
 
 /* ---------- Sticky mobile bar ---------- */
