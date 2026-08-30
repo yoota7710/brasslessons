@@ -288,7 +288,7 @@ section { padding: 96px 0; }
 }
 .instructor-card {
   display: grid;
-  grid-template-columns: 1fr 1fr;
+  grid-template-columns: 4fr 6fr;
   gap: 32px;
   background: var(--white);
   border-radius: var(--radius);
@@ -639,15 +639,6 @@ section { padding: 96px 0; }
   gap: 16px;
   margin-bottom: 28px;
   flex-wrap: wrap;
-}
-.board-mode-banner {
-  background: var(--gold-light);
-  color: var(--gold-dark);
-  border-radius: 12px;
-  padding: 12px 18px;
-  font-size: 0.85rem;
-  font-weight: 700;
-  margin-bottom: 24px;
 }
 .board-list {
   display: flex;

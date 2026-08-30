@@ -7,7 +7,7 @@
   이 값이 비어 있으면 브라우저의 localStorage 만 사용하는 "데모 모드"로 동작한다.
   데모 모드에서는 이메일 발송이 되지 않고, 이 브라우저에만 글이 저장된다.
 */
-const APPS_SCRIPT_URL = ''; // 예: 'https://script.google.com/macros/s/AKfycb.../exec'
+const APPS_SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbzWZSiyR5qr1OK5kaJfAGUY8im6Oi2lhGIqed48NNHixRVn_WCbTbZoLiS8CEmphYUZ/exec';
 
 const DEMO_KEY = 'brasslessons_inquiries_demo';
 const INSTRUMENT_LABEL = { trumpet: '트럼펫', trombone: '트롬본', etc: '문의' };
@@ -156,12 +156,6 @@ async function refreshBoard() {
 }
 
 document.addEventListener('DOMContentLoaded', () => {
-  const banner = document.getElementById('modeBanner');
-  if (!isConfigured()) {
-    banner.style.display = 'block';
-    banner.textContent = '현재 데모 모드입니다. 이 브라우저에만 임시로 저장되며, 이메일은 발송되지 않습니다. 실제 서버 연결 방법은 SETUP.md를 참고하세요.';
-  }
-
   refreshBoard();
 
   const form = document.getElementById('inquiryForm');
@@ -183,12 +177,7 @@ document.addEventListener('DOMContentLoaded', () => {
     submitBtn.disabled = false;
 
     if (result.ok) {
-      showStatus(
-        result.demo
-          ? '문의가 등록되었습니다. (데모 모드: 이 브라우저에만 저장됨, 이메일 미발송)'
-          : '문의가 등록되었습니다. 담당 선생님께 이메일로 전달됩니다!',
-        true
-      );
+      showStatus('문의가 등록되었습니다. 담당 선생님께 이메일로 전달됩니다!', true);
       form.reset();
       refreshBoard();
     } else {
