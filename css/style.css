@@ -513,6 +513,7 @@ section { padding: 96px 0; }
   padding: 22px 26px;
   text-align: left;
   font-weight: 700;
+  font-size: 1.05rem;
   color: var(--navy);
 }
 .faq-q .qmark {
@@ -535,7 +536,7 @@ section { padding: 96px 0; }
 .faq-a p {
   padding: 0 26px 22px 26px;
   color: var(--ink-soft);
-  font-size: 0.94rem;
+  font-size: 1.02rem;
   white-space: pre-line;
 }
 
