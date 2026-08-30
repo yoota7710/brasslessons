@@ -54,25 +54,17 @@ function doGet(e) {
 }
 
 /**
- * e.parameter 는 POST 본문의 한글 등 non-ASCII 값을 ISO-8859-1로 잘못 디코딩하는
- * Apps Script 버그가 있어, 그 결과를 UTF-8 바이트로 되돌려 다시 디코딩한다.
+ * e.parameter(form-urlencoded 파싱)는 POST 본문의 한글 등 non-ASCII 값을
+ * 복구 불가능하게 깨뜨리는 Apps Script 버그가 있다. 클라이언트가 JSON으로
+ * 보내고 여기서 직접 JSON.parse 하면 이 경로를 완전히 우회할 수 있다.
  */
-function fixEncoding_(str) {
-  if (!str) return str;
-  try {
-    return decodeURIComponent(escape(str));
-  } catch (e) {
-    return str;
-  }
-}
-
 function doPost(e) {
-  const p = e.parameter;
-  const name = fixEncoding_(p.name || '');
-  const contact = fixEncoding_(p.contact || '');
+  const p = JSON.parse(e.postData.contents);
+  const name = p.name || '';
+  const contact = p.contact || '';
   const instrument = p.instrument || 'etc';
-  const title = fixEncoding_(p.title || '');
-  const message = fixEncoding_(p.message || '');
+  const title = p.title || '';
+  const message = p.message || '';
   const date = p.date ? new Date(p.date) : new Date();
 
   getSheet_().appendRow([date, name, contact, instrument, title, message]);
