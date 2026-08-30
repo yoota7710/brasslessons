@@ -13,6 +13,7 @@
 const OWNER_EMAIL = 'yooka7710@gmail.com'; // 문의 알림을 받을 이메일 주소
 const SHEET_NAME = '문의목록';
 const ENABLE_KAKAO_NOTIFY = false; // 카카오 알림을 쓰려면 true 로 변경 (SETUP.md 4번 참고)
+const SCRIPT_VERSION = 'json-v3'; // 배포가 실제 반영됐는지 확인용 (doGet 응답에 포함)
 // ---------------------------------------------
 
 function getSheet_() {
@@ -41,13 +42,14 @@ function doGet(e) {
     }))
     .reverse();
 
+  const payload = { version: SCRIPT_VERSION, items };
   const callback = e && e.parameter && e.parameter.callback;
   const output = ContentService.createTextOutput();
   if (callback) {
-    output.setContent(callback + '(' + JSON.stringify(items) + ')');
+    output.setContent(callback + '(' + JSON.stringify(payload) + ')');
     output.setMimeType(ContentService.MimeType.JAVASCRIPT);
   } else {
-    output.setContent(JSON.stringify(items));
+    output.setContent(JSON.stringify(payload));
     output.setMimeType(ContentService.MimeType.JSON);
   }
   return output;
