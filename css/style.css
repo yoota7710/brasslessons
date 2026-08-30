@@ -250,19 +250,12 @@ button { font-family: inherit; cursor: pointer; border: none; background: none; 
   width: 100%;
   max-width: 420px;
   aspect-ratio: 4 / 3.4;
-  border-radius: 20px;
-  overflow: hidden;
-  background:
-    radial-gradient(circle at 50% 45%, rgba(198,150,60,0.16), transparent 60%),
-    linear-gradient(160deg, #202c42, var(--navy));
 }
 .hero-art .photo-frame img {
   width: 100%;
   height: 100%;
   object-fit: contain;
   object-position: center;
-  padding: 18%;
-  box-sizing: border-box;
 }
 
 /* ---------- Section base ---------- */
