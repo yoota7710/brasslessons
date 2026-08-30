@@ -84,6 +84,7 @@
       <a href="#hero">홈</a>
       <a href="#about">강사소개</a>
       <a href="#curriculum">커리큘럼</a>
+      <a href="review.html">후기</a>
       <a href="#faq">Q&amp;A</a>
       <a href="#location">오시는길</a>
       <a href="board.html">문의 게시판</a>
@@ -286,7 +287,20 @@
   </div>
 </section>
 
-<section id="faq">
+<section id="review">
+  <div class="wrap">
+    <div class="section-head">
+      <p class="eyebrow">Review</p>
+      <h2>수강생들의 진짜 후기</h2>
+      <p>실제로 레슨을 받으신 분들의 솔직한 후기입니다. <a href="review.html" style="color:var(--gold-dark); font-weight:700;">전체 후기 보기 / 후기 남기기 →</a></p>
+    </div>
+    <div id="homeReviewList" class="review-grid">
+      <div class="empty-state">후기를 불러오는 중...</div>
+    </div>
+  </div>
+</section>
+
+<section id="faq" class="section-alt">
   <div class="wrap">
     <div class="section-head">
       <p class="eyebrow">Q&amp;A</p>
@@ -326,6 +340,19 @@
         <button class="faq-q"><span><span class="qmark">Q.</span> 체험 레슨은 비용이 드나요?</span><svg class="chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg></button>
         <div class="faq-a"><p>체험 레슨은 무료로 진행됩니다. 부담없이 상담 + 체험 레슨 먼저 받아보시고 결정하실 수 있습니다.</p></div>
       </div>
+    </div>
+  </div>
+</section>
+
+<section id="blog">
+  <div class="wrap">
+    <div class="section-head">
+      <p class="eyebrow">Blog</p>
+      <h2>레슨 이야기</h2>
+      <p>수강생이 직접 쓰는 트럼펫 레슨 일기입니다. <a href="blog.html" style="color:var(--gold-dark); font-weight:700;">레슨 이야기 더 보기 →</a></p>
+    </div>
+    <div id="homeBlogList" class="blog-list">
+      <div class="empty-state">글을 불러오는 중...</div>
     </div>
   </div>
 </section>
@@ -370,12 +397,12 @@
         <div class="contact-choice">
           <h4>트럼펫 레슨 문의</h4>
           <p>조성호 선생님과 1:1 카톡 상담</p>
-          <a href="https://open.kakao.com/o/sXsxBhui" target="_blank" rel="noopener" class="btn btn-kakao btn-block">트럼펫 카톡 상담하기</a>
+          <a href="https://open.kakao.com/o/sWyKnF2h" target="_blank" rel="noopener" class="btn btn-kakao btn-block">트럼펫 카톡 상담하기</a>
         </div>
         <div class="contact-choice">
           <h4>트롬본 레슨 문의</h4>
           <p>최성민 선생님과 1:1 카톡 상담</p>
-          <a href="https://open.kakao.com/o/s3RNm6ui" target="_blank" rel="noopener" class="btn btn-kakao btn-block">트롬본 카톡 상담하기</a>
+          <a href="https://open.kakao.com/o/sWyKnF2h" target="_blank" rel="noopener" class="btn btn-kakao btn-block">트롬본 카톡 상담하기</a>
         </div>
       </div>
       <p style="margin-top:26px;"><a href="board.html" style="color:#f3e2ba; font-weight:700; text-decoration:underline;">또는 문의 게시판에 글 남기기 →</a></p>
@@ -389,8 +416,10 @@
       <a href="index.html">홈</a>
       <a href="about.html">강사소개</a>
       <a href="curriculum.html">커리큘럼</a>
+      <a href="review.html">후기</a>
       <a href="faq.html">Q&amp;A</a>
       <a href="location.html">오시는길</a>
+      <a href="blog.html">레슨 이야기</a>
       <a href="board.html">문의 게시판</a>
     </nav>
     <span>브라스레슨 · 서울 서초구 효령로31길 54 목련빌딩 용드럼스튜디오</span>
@@ -404,5 +433,6 @@
 </div>
 
 <script src="js/main.js"></script>
+<script src="js/home-widgets.js"></script>
 </body>
 </html>

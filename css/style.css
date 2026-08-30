@@ -707,13 +707,78 @@ section { padding: 96px 0; }
   display: none;
 }
 .board-item.open .board-item-body { display: block; }
-.board-empty {
+.board-empty,
+.empty-state {
   text-align: center;
   padding: 60px 20px;
   color: var(--ink-soft);
   background: var(--white);
   border-radius: var(--radius);
 }
+
+/* ---------- Reviews ---------- */
+.review-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+  gap: 18px;
+  margin-bottom: 48px;
+}
+.review-card {
+  background: var(--white);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+  padding: 24px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+.review-card-head {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 10px;
+}
+.review-card-name { font-weight: 700; color: var(--navy); }
+.review-card-meta { font-size: 0.78rem; color: var(--ink-soft); display: flex; gap: 8px; align-items: center; }
+.review-card-body {
+  color: var(--ink-soft);
+  font-size: 0.92rem;
+  white-space: pre-line;
+}
+.stars { color: var(--gold); letter-spacing: 2px; font-size: 0.95rem; }
+.stars .empty { color: rgba(27, 36, 54, 0.16); }
+
+.star-rating { display: flex; gap: 4px; }
+.star-rating button {
+  background: none;
+  border: none;
+  padding: 2px;
+  font-size: 1.7rem;
+  line-height: 1;
+  color: rgba(27, 36, 54, 0.2);
+  cursor: pointer;
+}
+.star-rating button.filled { color: var(--gold); }
+
+/* ---------- Blog / lesson diary ---------- */
+.blog-list {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  margin-bottom: 48px;
+}
+.blog-item {
+  display: block;
+  background: var(--white);
+  border-radius: 14px;
+  box-shadow: var(--shadow);
+  padding: 20px 24px;
+  color: inherit;
+}
+.blog-item:hover { box-shadow: var(--shadow-strong); }
+.blog-item-title { font-weight: 700; color: var(--navy); margin-bottom: 6px; }
+.blog-item-meta { font-size: 0.78rem; color: var(--ink-soft); margin-bottom: 10px; }
+.blog-item-desc { font-size: 0.9rem; color: var(--ink-soft); }
 
 .board-form {
   background: var(--white);
