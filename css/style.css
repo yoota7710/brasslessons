@@ -288,7 +288,7 @@ section { padding: 96px 0; }
 }
 .instructor-card {
   display: grid;
-  grid-template-columns: 4fr 6fr;
+  grid-template-columns: 3fr 7fr;
   gap: 32px;
   background: var(--white);
   border-radius: var(--radius);
@@ -324,22 +324,22 @@ section { padding: 96px 0; }
   background: linear-gradient(180deg, transparent 55%, rgba(27,36,54,0.5));
   pointer-events: none;
 }
-.instructor-card h3 { font-size: 1.3rem; color: var(--navy); }
+.instructor-card > .instructor-info > h3 { font-size: 1.5rem; color: var(--navy); }
 .instructor-role {
   display: inline-block;
   margin: 8px 0 16px;
-  font-size: 0.8rem;
+  font-size: 0.9rem;
   font-weight: 700;
   color: var(--gold-dark);
   letter-spacing: 0.06em;
 }
 .instructor-card.trombone .instructor-role { color: var(--steel-dark); }
-.instructor-card p.bio { color: var(--ink-soft); font-size: 0.96rem; }
+.instructor-card p.bio { color: var(--ink-soft); font-size: 1.05rem; }
 .instructor-card p.bio-quote {
   font-style: italic;
   color: var(--gold-dark);
   font-weight: 700;
-  font-size: 0.92rem;
+  font-size: 1rem;
   margin-bottom: 12px;
 }
 .instructor-card.trombone p.bio-quote { color: var(--steel-dark); }
@@ -353,7 +353,7 @@ section { padding: 96px 0; }
 }
 .instructor-card.trombone .career { border-top-color: var(--steel); }
 .career-title {
-  font-size: 0.76rem;
+  font-size: 0.85rem;
   font-weight: 700;
   letter-spacing: 0.1em;
   text-transform: uppercase;
@@ -363,15 +363,15 @@ section { padding: 96px 0; }
 .instructor-card.trombone .career-title { color: var(--steel-dark); }
 .career-group { margin-bottom: 14px; }
 .career-group:last-child { margin-bottom: 0; }
-.career-group h5 {
-  font-size: 0.84rem;
+.career-group h3 {
+  font-size: 0.95rem;
   font-weight: 700;
   color: var(--ink);
   margin-bottom: 7px;
 }
 .career-group ul { display: flex; flex-direction: column; gap: 4px; }
 .career-group ul li {
-  font-size: 0.87rem;
+  font-size: 0.98rem;
   color: var(--ink-soft);
   padding-left: 15px;
   position: relative;
