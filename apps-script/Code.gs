@@ -53,8 +53,26 @@ function doGet(e) {
   return output;
 }
 
+/**
+ * e.parameter 는 POST 본문의 한글 등 non-ASCII 값을 잘못된 인코딩으로 해석하는
+ * Apps Script 버그가 있어, 원본 본문(e.postData.contents)을 직접 UTF-8로 디코딩한다.
+ */
+function parseFormData_(e) {
+  const params = {};
+  if (e.postData && e.postData.contents) {
+    e.postData.contents.split('&').forEach((pair) => {
+      const idx = pair.indexOf('=');
+      if (idx === -1) return;
+      const key = decodeURIComponent(pair.slice(0, idx).replace(/\+/g, ' '));
+      const val = decodeURIComponent(pair.slice(idx + 1).replace(/\+/g, ' '));
+      params[key] = val;
+    });
+  }
+  return params;
+}
+
 function doPost(e) {
-  const p = e.parameter;
+  const p = parseFormData_(e);
   const name = p.name || '';
   const contact = p.contact || '';
   const instrument = p.instrument || 'etc';
