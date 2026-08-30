@@ -54,30 +54,25 @@ function doGet(e) {
 }
 
 /**
- * e.parameter 는 POST 본문의 한글 등 non-ASCII 값을 잘못된 인코딩으로 해석하는
- * Apps Script 버그가 있어, 원본 본문(e.postData.contents)을 직접 UTF-8로 디코딩한다.
+ * e.parameter 는 POST 본문의 한글 등 non-ASCII 값을 ISO-8859-1로 잘못 디코딩하는
+ * Apps Script 버그가 있어, 그 결과를 UTF-8 바이트로 되돌려 다시 디코딩한다.
  */
-function parseFormData_(e) {
-  const params = {};
-  if (e.postData && e.postData.contents) {
-    e.postData.contents.split('&').forEach((pair) => {
-      const idx = pair.indexOf('=');
-      if (idx === -1) return;
-      const key = decodeURIComponent(pair.slice(0, idx).replace(/\+/g, ' '));
-      const val = decodeURIComponent(pair.slice(idx + 1).replace(/\+/g, ' '));
-      params[key] = val;
-    });
+function fixEncoding_(str) {
+  if (!str) return str;
+  try {
+    return decodeURIComponent(escape(str));
+  } catch (e) {
+    return str;
   }
-  return params;
 }
 
 function doPost(e) {
-  const p = parseFormData_(e);
-  const name = p.name || '';
-  const contact = p.contact || '';
+  const p = e.parameter;
+  const name = fixEncoding_(p.name || '');
+  const contact = fixEncoding_(p.contact || '');
   const instrument = p.instrument || 'etc';
-  const title = p.title || '';
-  const message = p.message || '';
+  const title = fixEncoding_(p.title || '');
+  const message = fixEncoding_(p.message || '');
   const date = p.date ? new Date(p.date) : new Date();
 
   getSheet_().appendRow([date, name, contact, instrument, title, message]);

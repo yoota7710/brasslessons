@@ -7,7 +7,7 @@
   이 값이 비어 있으면 브라우저의 localStorage 만 사용하는 "데모 모드"로 동작한다.
   데모 모드에서는 이메일 발송이 되지 않고, 이 브라우저에만 글이 저장된다.
 */
-const APPS_SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbzWZSiyR5qr1OK5kaJfAGUY8im6Oi2lhGIqed48NNHixRVn_WCbTbZoLiS8CEmphYUZ/exec';
+const APPS_SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbxANUDvAQ1E5MZ4kpj2Rg1lqHDo-AWHSCnPuf0e6kYeJEjk2eVBnTgb3iY_mtvy8NG2/exec';
 
 const DEMO_KEY = 'brasslessons_inquiries_demo';
 const INSTRUMENT_LABEL = { trumpet: '트럼펫', trombone: '트롬본', etc: '문의' };
