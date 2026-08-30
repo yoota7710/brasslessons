@@ -1,7 +1,10 @@
 /*
   네이버 블로그(raon92_) 최신 글 목록. Google Apps Script가 서버에서 RSS를
   대신 가져와(type=blog) CORS 문제 없이 JSONP로 돌려준다.
+  review.html에서 reviews.js와 함께 로드되므로, 전역 변수 충돌을 막기 위해
+  IIFE로 감싼다.
 */
+(function () {
 const APPS_SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbwFq7FPo1TVr2levh4N1zZk_X93IN-K6O8d9yymJ0L8QCjw0mmUfqMlk0frFPBX5UC9/exec';
 
 function jsonpFetch(url) {
@@ -86,6 +89,9 @@ function renderBlogList(items, targetId, limit) {
 document.addEventListener('DOMContentLoaded', async () => {
   const listEl = document.getElementById('blogList');
   if (!listEl) return;
+  const limitAttr = listEl.dataset.limit;
+  const limit = limitAttr ? Number(limitAttr) : undefined;
   const items = await fetchBlogPosts();
-  renderBlogList(items, 'blogList');
+  renderBlogList(items, 'blogList', limit);
 });
+})();

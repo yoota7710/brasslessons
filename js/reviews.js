@@ -2,7 +2,10 @@
   후기 게시판 연동 스크립트. board.js와 같은 Google Apps Script 웹앱을 사용하되,
   type=reviews / type=review 파라미터로 문의 게시판과 구분한다.
   APPS_SCRIPT_URL이 비어있으면 데모 모드(localStorage)로 동작한다.
+  review.html에서 blog.js와 함께 로드되므로, 전역 변수 충돌을 막기 위해
+  IIFE로 감싼다.
 */
+(function () {
 const APPS_SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbwFq7FPo1TVr2levh4N1zZk_X93IN-K6O8d9yymJ0L8QCjw0mmUfqMlk0frFPBX5UC9/exec';
 
 const REVIEW_DEMO_KEY = 'brasslessons_reviews_demo';
@@ -217,3 +220,4 @@ document.addEventListener('DOMContentLoaded', () => {
     }
   });
 });
+})();
