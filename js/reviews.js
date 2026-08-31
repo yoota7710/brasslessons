@@ -136,6 +136,7 @@ function renderReviews(items, targetId, emptyMessage, limit) {
   }
 
   const shown = typeof limit === 'number' ? items.slice(0, limit) : items;
+  listEl.classList.toggle('few-items', shown.length < 3);
   listEl.innerHTML = shown.map((item) => {
     const label = REVIEW_INSTRUMENT_LABEL[item.instrument] || '문의';
     return `

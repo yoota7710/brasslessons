@@ -84,7 +84,9 @@ async function renderHomeReviews() {
     el.innerHTML = `<div class="empty-state">아직 등록된 후기가 없습니다. 첫 번째 후기를 남겨보세요!</div>`;
     return;
   }
-  el.innerHTML = items.slice(0, HOME_PREVIEW_COUNT).map((item) => {
+  const shown = items.slice(0, HOME_PREVIEW_COUNT);
+  el.classList.toggle('few-items', shown.length < 3);
+  el.innerHTML = shown.map((item) => {
     const label = INSTRUMENT_LABEL[item.instrument] || '문의';
     return `
       <div class="review-card">

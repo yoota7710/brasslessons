@@ -801,6 +801,8 @@ section { padding: 96px 0; }
 .carousel-arrow:hover { background: var(--navy); color: var(--white); }
 .review-grid {
   display: flex;
+  flex: 1 1 auto;
+  min-width: 0;
   gap: 18px;
   overflow-x: auto;
   scroll-snap-type: x mandatory;
@@ -822,6 +824,10 @@ section { padding: 96px 0; }
   gap: 10px;
   flex: 0 0 280px;
   scroll-snap-align: start;
+}
+.review-grid.few-items .review-card {
+  flex: 1 1 0;
+  min-width: 0;
 }
 .review-card-head {
   display: flex;
@@ -962,9 +968,22 @@ section { padding: 96px 0; }
   section { padding: 64px 0; }
 }
 
+@media (max-width: 640px) {
+  .carousel-arrow { display: none; }
+  .review-carousel { gap: 0; }
+  .review-grid { gap: 14px; }
+  .review-grid .review-card,
+  .review-grid.few-items .review-card {
+    flex: 0 0 84%;
+    min-width: 0;
+  }
+}
+
 @media (max-width: 520px) {
   .info-bar { grid-template-columns: 1fr 1fr; }
   .board-item-head { flex-wrap: wrap; }
-  .carousel-arrow { width: 32px; height: 32px; font-size: 1.15rem; }
-  .review-card { flex-basis: 240px; }
+  .review-grid .review-card,
+  .review-grid.few-items .review-card {
+    flex-basis: 88%;
+  }
 }
