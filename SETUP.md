@@ -1,3 +1,16 @@
+# 강사 경력 정보 수정 방법
+
+강사(조성호/최성민) 프로필과 경력은 `index.html`과 `trumpet-trombone-teacher.html` 두 페이지에
+동시에 나오는데, 각 파일을 직접 손으로 고치지 않습니다. 대신 `data/instructors.json` 한 곳만
+수정하고 아래 명령을 실행하면 두 페이지가 자동으로 같이 업데이트됩니다.
+
+```
+node scripts/build-instructors.js
+```
+
+두 HTML 파일의 강사 카드 부분(`<!-- INSTRUCTOR_CARDS:START -->` ~ `<!-- INSTRUCTOR_CARDS:END -->`
+사이)은 이 스크립트가 생성하는 영역이라 직접 수정해도 다음 실행 때 덮어써집니다.
+
 # 문의 게시판 실서버 연결 방법 (Google Apps Script)
 
 지금 상태로 `board.html`을 열면 "데모 모드"로 동작합니다 (이 브라우저에만 저장, 이메일 미발송).
