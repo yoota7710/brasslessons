@@ -48,6 +48,15 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   });
 
+  document.querySelectorAll('.carousel-arrow').forEach((btn) => {
+    btn.addEventListener('click', () => {
+      const track = document.getElementById(btn.dataset.target);
+      if (!track) return;
+      const dir = btn.classList.contains('prev') ? -1 : 1;
+      track.scrollBy({ left: dir * track.clientWidth * 0.9, behavior: 'smooth' });
+    });
+  });
+
   document.querySelectorAll('.program-tabs').forEach((tabGroup) => {
     const programBtns = tabGroup.querySelectorAll('.program-btn');
     const programPanels = tabGroup.parentElement.querySelectorAll('.program-panel');

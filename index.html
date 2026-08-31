@@ -149,10 +149,14 @@
       <h1 class="serif">트럼펫과 트롬본,<br>두 악기의 매력을 <span>맞춤 레슨</span>으로</h1>
       <p class="lead">처음 악기를 잡는 입문자부터 입시·취미 목표까지, 호흡·발음·음정을 기초부터 차근차근. 무료 체험 레슨으로 먼저 확인해 보세요.</p>
       <div class="hero-actions">
-        <a href="https://open.kakao.com/o/sWyKnF2h" target="_blank" rel="noopener" class="btn btn-kakao">트럼펫 카톡 상담</a>
-        <a href="https://open.kakao.com/o/sWyKnF2h" target="_blank" rel="noopener" class="btn btn-kakao">트롬본 카톡 상담</a>
-        <a href="trumpet-trombone-trial-lesson.html" class="btn btn-outline" style="border-color:rgba(255,255,255,0.35); color:#fff;">체험레슨 신청 (무료)</a>
-        <a href="board.html" class="btn btn-outline" style="border-color:rgba(255,255,255,0.35); color:#fff;">문의 게시판</a>
+        <div class="hero-actions-row">
+          <a href="https://open.kakao.com/o/sWyKnF2h" target="_blank" rel="noopener" class="btn btn-kakao">트럼펫 카톡 상담</a>
+          <a href="https://open.kakao.com/o/sWyKnF2h" target="_blank" rel="noopener" class="btn btn-kakao">트롬본 카톡 상담</a>
+        </div>
+        <div class="hero-actions-row">
+          <a href="trumpet-trombone-trial-lesson.html" class="btn btn-outline" style="border-color:rgba(255,255,255,0.35); color:#fff;">체험레슨 신청 (무료)</a>
+          <a href="board.html" class="btn btn-outline" style="border-color:rgba(255,255,255,0.35); color:#fff;">문의 게시판</a>
+        </div>
       </div>
       <div class="hero-stats">
         <div><strong>무료</strong><span>체험 레슨</span></div>
@@ -332,20 +336,56 @@
   </div>
 </section>
 
-<section id="review">
+<section id="process">
+  <div class="wrap">
+    <div class="section-head">
+      <p class="eyebrow">Process</p>
+      <h2>레슨 시작까지 4단계</h2>
+      <p>상담부터 정기레슨까지, 이렇게 진행됩니다.</p>
+    </div>
+    <div class="process-grid">
+      <a href="#contact" class="process-step">
+        <span class="process-num">1</span>
+        <h4>상담</h4>
+        <p>카톡으로 편하게 문의하고, 악기 선택 고민도 함께 나눠보세요.</p>
+      </a>
+      <a href="trumpet-trombone-trial-lesson.html" class="process-step">
+        <span class="process-num">2</span>
+        <h4>체험레슨</h4>
+        <p>무료 체험레슨으로 먼저 확인해 보세요. 희망 날짜·시간을 선택해 신청합니다.</p>
+      </a>
+      <a href="trumpet-trombone-curriculum.html" class="process-step">
+        <span class="process-num">3</span>
+        <h4>커리큘럼 설계</h4>
+        <p>취미·입시·군악대 등 목표에 맞춰 1:1 맞춤 커리큘럼을 구성합니다.</p>
+      </a>
+      <a href="board.html" class="process-step">
+        <span class="process-num">4</span>
+        <h4>정기레슨 시작</h4>
+        <p>주 1회 60분, 진도에 맞춰 꾸준히 이어갑니다.</p>
+      </a>
+    </div>
+  </div>
+</section>
+
+<section id="review" class="section-alt">
   <div class="wrap">
     <div class="section-head">
       <p class="eyebrow">Review</p>
       <h2>수강생들의 진짜 후기</h2>
       <p>실제로 레슨을 받으신 분들의 솔직한 후기입니다. <a href="trumpet-trombone-review.html" style="color:var(--gold-dark); font-weight:700;"><br>전체 후기 보기 / 후기 남기기 →</a></p>
     </div>
-    <div id="homeReviewList" class="review-grid">
-      <div class="empty-state">후기를 불러오는 중...</div>
+    <div class="review-carousel">
+      <button type="button" class="carousel-arrow prev" data-target="homeReviewList" aria-label="이전 후기">‹</button>
+      <div id="homeReviewList" class="review-grid">
+        <div class="empty-state">후기를 불러오는 중...</div>
+      </div>
+      <button type="button" class="carousel-arrow next" data-target="homeReviewList" aria-label="다음 후기">›</button>
     </div>
   </div>
 </section>
 
-<section id="faq" class="section-alt">
+<section id="faq">
   <div class="wrap">
     <div class="section-head">
       <p class="eyebrow">Q&amp;A</p>
@@ -389,7 +429,7 @@
   </div>
 </section>
 
-<section id="blog">
+<section id="blog" class="section-alt">
   <div class="wrap">
     <div class="section-head">
       <p class="eyebrow">Blog</p>
@@ -402,7 +442,7 @@
   </div>
 </section>
 
-<section id="location" class="section-alt">
+<section id="location">
   <div class="wrap">
     <div class="section-head">
       <p class="eyebrow">Location</p>
@@ -418,21 +458,14 @@
           <a class="btn btn-outline btn-sm" target="_blank" rel="noopener" href="https://map.naver.com/p/search/서울 서초구 효령로31길 54 목련빌딩">네이버지도에서 보기</a>
         </div>
       </div>
-      <div class="map-art">
-        <svg viewBox="0 0 200 160">
-          <rect x="10" y="90" width="180" height="8" rx="4" fill="#e4dac2"/>
-          <rect x="40" y="40" width="30" height="50" rx="4" fill="#c6963c" opacity="0.85"/>
-          <rect x="78" y="55" width="26" height="35" rx="4" fill="#5c7a99" opacity="0.85"/>
-          <rect x="112" y="30" width="34" height="60" rx="4" fill="#1b2436" opacity="0.9"/>
-          <path d="M100 20 C88 20 80 30 80 42 C80 58 100 78 100 78 C100 78 120 58 120 42 C120 30 112 20 100 20 Z" fill="#a87927"/>
-          <circle cx="100" cy="42" r="7" fill="#fbf7ef"/>
-        </svg>
+      <div class="map-embed">
+        <iframe src="https://maps.google.com/maps?q=%EC%84%9C%EC%9A%B8%20%EC%84%9C%EC%B4%88%EA%B5%AC%20%ED%9A%A8%EB%A0%B9%EB%A1%9C31%EA%B8%B8%2054%20%EB%AA%A9%EB%A0%A8%EB%B9%8C%EB%94%A9&t=&z=17&ie=UTF8&iwloc=&output=embed" loading="lazy" referrerpolicy="no-referrer-when-downgrade" title="브라스레슨 위치 지도"></iframe>
       </div>
     </div>
   </div>
 </section>
 
-<section id="contact">
+<section id="contact" class="section-alt">
   <div class="wrap">
     <div class="contact-cta">
       <p class="eyebrow" style="justify-content:center;">Contact</p>
