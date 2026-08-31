@@ -3,7 +3,7 @@
   전체 목록/작성은 review.html, blog.html에서 처리하며, 이 스크립트는
   같은 Apps Script 웹앱을 조회 전용(GET)으로만 사용한다.
 */
-const APPS_SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbwFq7FPo1TVr2levh4N1zZk_X93IN-K6O8d9yymJ0L8QCjw0mmUfqMlk0frFPBX5UC9/exec';
+const APPS_SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbxqin_xN8KRqkiUGzcMpYqmjIPb_2g0qdE7btk8Zd3zkKs2oasq-OmbwA7A6vsVmcYB/exec';
 const HOME_PREVIEW_COUNT = 3;
 const INSTRUMENT_LABEL = { trumpet: '트럼펫', trombone: '트롬본', etc: '문의' };
 

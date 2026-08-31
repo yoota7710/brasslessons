@@ -6,7 +6,7 @@
   IIFE로 감싼다.
 */
 (function () {
-const APPS_SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbwFq7FPo1TVr2levh4N1zZk_X93IN-K6O8d9yymJ0L8QCjw0mmUfqMlk0frFPBX5UC9/exec';
+const APPS_SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbxqin_xN8KRqkiUGzcMpYqmjIPb_2g0qdE7btk8Zd3zkKs2oasq-OmbwA7A6vsVmcYB/exec';
 
 const REVIEW_DEMO_KEY = 'brasslessons_reviews_demo';
 const REVIEW_INSTRUMENT_LABEL = { trumpet: '트럼펫', trombone: '트롬본', etc: '문의' };

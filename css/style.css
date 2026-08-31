@@ -108,7 +108,7 @@ button { font-family: inherit; cursor: pointer; border: none; background: none; 
 .main-nav {
   display: flex;
   align-items: center;
-  gap: 32px;
+  gap: 22px;
 }
 .main-nav a {
   font-size: 0.95rem;
@@ -824,7 +824,7 @@ section { padding: 96px 0; }
 .form-status.err { color: #b3452c; }
 
 /* ---------- Responsive ---------- */
-@media (max-width: 880px) {
+@media (max-width: 960px) {
   .main-nav { display: none; }
   .nav-toggle { display: flex; }
   .main-nav.open {
@@ -838,6 +838,9 @@ section { padding: 96px 0; }
     box-shadow: var(--shadow);
   }
   .header-actions .btn span.long { display: none; }
+}
+
+@media (max-width: 880px) {
   .hero .wrap { grid-template-columns: 1fr; text-align: center; }
   .hero p.lead { margin-left: auto; margin-right: auto; }
   .hero-actions, .hero-stats { justify-content: center; }

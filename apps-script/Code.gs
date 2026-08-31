@@ -15,10 +15,11 @@
 const OWNER_EMAIL = 'yooka7710@gmail.com'; // 알림을 받을 이메일 주소
 const SHEET_NAME = '문의목록';
 const REVIEW_SHEET_NAME = '후기목록';
+const TRIAL_SHEET_NAME = '체험레슨신청';
 const BLOG_RSS_URL = 'https://rss.blog.naver.com/raon92_.xml';
 const BLOG_CACHE_SECONDS = 1800; // RSS는 30분 캐시 (방문자마다 매번 가져오면 할당량 소진)
 const ENABLE_KAKAO_NOTIFY = false; // 카카오 알림을 쓰려면 true 로 변경 (SETUP.md 4번 참고)
-const SCRIPT_VERSION = 'b64-v5'; // 배포가 실제 반영됐는지 확인용 (doGet 응답에 포함)
+const SCRIPT_VERSION = 'b64-v6'; // 배포가 실제 반영됐는지 확인용 (doGet 응답에 포함)
 // ---------------------------------------------
 
 function getSheet_() {
@@ -37,6 +38,16 @@ function getReviewSheet_() {
   if (!sheet) {
     sheet = ss.insertSheet(REVIEW_SHEET_NAME);
     sheet.appendRow(['날짜', '이름', '악기', '별점', '후기내용']);
+  }
+  return sheet;
+}
+
+function getTrialSheet_() {
+  const ss = SpreadsheetApp.getActiveSpreadsheet();
+  let sheet = ss.getSheetByName(TRIAL_SHEET_NAME);
+  if (!sheet) {
+    sheet = ss.insertSheet(TRIAL_SHEET_NAME);
+    sheet.appendRow(['등록일', '이름', '연락처', '악기', '희망날짜', '희망시간대', '전달내용']);
   }
   return sheet;
 }
@@ -152,6 +163,9 @@ function doPost(e) {
   if (p.type === 'review') {
     return postReview_(p);
   }
+  if (p.type === 'trial') {
+    return postTrial_(p);
+  }
   return postInquiry_(p);
 }
 
@@ -187,6 +201,52 @@ function postInquiry_(p) {
   if (ENABLE_KAKAO_NOTIFY) {
     try {
       sendKakaoToMe_(`[브라스레슨 문의]\n${label} - ${title}\n작성자: ${name}`);
+    } catch (err) {
+      console.error('카카오 알림 실패: ' + err);
+    }
+  }
+
+  return ContentService
+    .createTextOutput(JSON.stringify({ ok: true }))
+    .setMimeType(ContentService.MimeType.JSON);
+}
+
+function postTrial_(p) {
+  const name = p.name || '';
+  const contact = p.contact || '';
+  const instrument = p.instrument || 'etc';
+  // 희망 날짜/시간은 문자열 그대로 저장한다. new Date()로 감싸면 Sheets가
+  // 날짜/시간 형식으로 다시 파싱하려다 값이 어긋날 수 있다.
+  const preferredDate = p.preferredDate || '';
+  const preferredTime = p.preferredTime || '';
+  const message = p.message || '';
+  const date = p.date ? new Date(p.date) : new Date();
+
+  getTrialSheet_().appendRow([date, name, contact, instrument, preferredDate, preferredTime, message]);
+
+  const label = instrumentLabel_(instrument);
+
+  try {
+    MailApp.sendEmail({
+      to: OWNER_EMAIL,
+      subject: `[브라스레슨 체험레슨 신청] ${label} - ${preferredDate} ${preferredTime}`,
+      body:
+        `새로운 체험레슨 신청이 등록되었습니다.\n\n` +
+        `악기: ${label}\n` +
+        `이름: ${name}\n` +
+        `연락처: ${contact}\n` +
+        `희망 날짜: ${preferredDate}\n` +
+        `희망 시간대: ${preferredTime}\n` +
+        `(희망 일정은 조율이 필요할 수 있습니다. 연락처로 확정 안내해 주세요.)\n\n` +
+        `전달 내용:\n${message}\n`,
+    });
+  } catch (err) {
+    console.error('이메일 발송 실패: ' + err);
+  }
+
+  if (ENABLE_KAKAO_NOTIFY) {
+    try {
+      sendKakaoToMe_(`[브라스레슨 체험레슨 신청]\n${label} - ${preferredDate} ${preferredTime}\n작성자: ${name}`);
     } catch (err) {
       console.error('카카오 알림 실패: ' + err);
     }
